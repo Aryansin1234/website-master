@@ -6,7 +6,10 @@
 
 .sponsors-track {
     display: flex;
-    animation: scroll 10s linear infinite;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 0.5s linear;
 }
 
 .sponsor-item {

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Now - Donation Section</title>
+  
+  <!-- Import Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP Library for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  
+  <!-- FontAwesome for Better Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <!-- Particles.js for Background Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffebee, #ffe0b2);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Particle.js container */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* Donation Card Styling */
+    .donation-card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      z-index: 1;
+      opacity: 0; /* Initial state for animation */
+    }
+
+    /* Heading */
+    .donation-heading {
+      font-size: 3rem;
+      color: #ff5e57;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Donation text */
+    .donation-text {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    /* Payment Methods Section */
+    .payment-methods {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    /* Bank Icons Styling */
+    .payment-icon {
+      font-size: 3rem;
+      color: #ff7043;
+      transition: transform 0.3s;
+    }
+
+    .payment-icon:hover {
+      transform: scale(1.2);
+      color: #ff5e57;
+    }
+
+    /* Donate Button */
+    .donate-btn {
+      background-color: #ff7043;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 20px;
+    }
+
+    .donate-btn:hover {
+      background-color: #ff5e57;
+      transform: scale(1.05);
+    }
+
+    /* Emoji styling */
+    .emoji {
+      font-size: 2rem;
+      margin-left: 10px;
+    }
+
+    /* Mobile-friendly styling */
+    @media (max-width: 640px) {
+      .donation-heading {
+        font-size: 2rem;
+      }
+      .donation-text {
+        font-size: 1rem;
+      }
+      .payment-methods {
+        flex-direction: column;
+      }
+      .payment-icon {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Donation Card -->
+  <div class="donation-card">
+    <!-- Heading -->
+    <h2 class="donation-heading">Donate Now</h2>
+
+    <!-- Donation Text -->
+    <p class="donation-text">
+      Your contribution can make a huge impact in our mission to help those in need. Support us by choosing any payment method below.
+    </p>
+
+    <!-- Payment Methods Icons -->
+    <div class="payment-methods">
+      <i class="fas fa-credit-card payment-icon" title="Credit/Debit Card"></i>
+      <i class="fas fa-qrcode payment-icon" title="QR Code"></i>
+      <i class="fas fa-mobile-alt payment-icon" title="UPI"></i>
+      <i class="fas fa-wallet payment-icon" title="Netbanking"></i>
+    </div>
+
+    <!-- Donate Button -->
+    <a href="https://razorpay.com" target="_blank">
+      <button class="donate-btn">Donate via Razorpay</button>
+    </a>
+  </div>
+
+  <!-- GSAP Animations Script -->
+  <script>
+    // Animate donation card on page load
+    gsap.to(".donation-card", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
+
+    // Animate heading
+    gsap.from(".donation-heading", { opacity: 0, y: -30, duration: 1, ease: "bounce.out", delay: 0.2 });
+
+    // Animate payment icons
+    gsap.from(".payment-icon", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      ease: "elastic.out(1, 0.75)"
+    });
+  </script>
+
+  <!-- Particles.js Configuration -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ff7043"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 4,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ff5e57",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 3,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+</body>
+</html>

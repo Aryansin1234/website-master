@@ -1,18 +1,16 @@
 // components/gallery/gallery.js
-const galleryTrack = document.querySelector('.gallery-track');
+const galleryItems = document.querySelectorAll('.gallery-item');
 const fullviewOverlay = document.getElementById('fullviewOverlay');
 const fullviewImage = document.getElementById('fullviewImage');
+const galleryTrack = document.querySelector('.gallery-track');
 
-function setupGalleryItemListeners() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const imgSrc = this.querySelector('img').src;
-            fullviewImage.src = imgSrc;
-            fullviewOverlay.classList.add('active');
-        });
+galleryItems.forEach(item => {
+    item.addEventListener('click', function() {
+        const imgSrc = this.querySelector('img').src;
+        fullviewImage.src = imgSrc;
+        fullviewOverlay.classList.add('active');
     });
-}
+});
 
 function closeFullview() {
     fullviewOverlay.classList.remove('active');
@@ -25,17 +23,13 @@ fullviewOverlay.addEventListener('click', function(e) {
 });
 
 // Clone gallery items for seamless loop
-const originalItems = document.querySelectorAll('.gallery-item');
 const itemWidth = 270; // 250px width + 20px margin
-const itemsToClone = originalItems.length;
+const itemsToClone = galleryItems.length;
 
 for (let i = 0; i < itemsToClone; i++) {
-    const clone = originalItems[i].cloneNode(true);
+    const clone = galleryItems[i].cloneNode(true);
     galleryTrack.appendChild(clone);
 }
-
-// Set up listeners for all items, including clones
-setupGalleryItemListeners();
 
 // Set initial position
 let currentPosition = 0;
